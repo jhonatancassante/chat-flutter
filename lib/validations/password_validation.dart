@@ -2,6 +2,7 @@ String? passwordValidation(String? password) {
   final passwordTemp = password ?? '';
   final passwordSize = passwordTemp.trim().length;
   String? response;
+  String responseStart = 'A senha deve:\n';
   const min = 8;
   const max = 24;
   final oneUppercase = RegExp(r'^(?=.*?[A-Z]).{1,}$');
@@ -10,28 +11,28 @@ String? passwordValidation(String? password) {
   final oneSpecial = RegExp(r'^(?=.*?[!@#$&_-]).{1,}$');
 
   if (passwordSize < min || passwordSize > max) {
-    response ??= '';
-    response += 'A senha deve ter entre $min e $max caracteres.\n';
+    response ??= responseStart;
+    response += '- Ter entre $min e $max caracteres.\n';
   }
 
   if (!oneUppercase.hasMatch(passwordTemp)) {
-    response ??= '';
-    response += 'A senha deve conter uma letra maiúscula.\n';
+    response ??= responseStart;
+    response += '- Conter uma letra maiúscula.\n';
   }
 
   if (!oneLowercase.hasMatch(passwordTemp)) {
-    response ??= '';
-    response += 'A senha deve conter uma letra minúscula.\n';
+    response ??= responseStart;
+    response += '- Conter uma letra minúscula.\n';
   }
 
   if (!oneDigit.hasMatch(passwordTemp)) {
-    response ??= '';
-    response += 'A senha deve conter um número.\n';
+    response ??= responseStart;
+    response += '- Conter um número.\n';
   }
 
   if (!oneSpecial.hasMatch(passwordTemp)) {
-    response ??= '';
-    response += 'A senha deve conter um caractere especial (!@#\$&_-).';
+    response ??= responseStart;
+    response += '- Conter um caractere especial (!@#\$&_-).';
   }
 
   return response;
