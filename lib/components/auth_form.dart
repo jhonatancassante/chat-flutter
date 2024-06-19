@@ -3,6 +3,7 @@ import 'package:chat/validations/email_validation.dart';
 import 'package:chat/validations/name_validation.dart';
 import 'package:chat/validations/password_validation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AuthForm extends StatefulWidget {
   const AuthForm({super.key});
@@ -96,8 +97,9 @@ class _AuthFormState extends State<AuthForm> {
                       ),
                     ),
                   ),
-                  validator: (senha) {
-                    if (_formData.password != senha) {
+                  validator: (password) {
+                    final passwordTemp = password ?? '';
+                    if (_formData.password != passwordTemp) {
                       return 'As senhas não coincidem.';
                     }
                     return null;
@@ -114,6 +116,8 @@ class _AuthFormState extends State<AuthForm> {
                 onPressed: () {
                   setState(() {
                     _formData.toggleAuthMode();
+                    _formKey.currentState?.save();
+                    _formKey.currentState?.reset();
                   });
                 },
                 child: Text(
