@@ -1,7 +1,20 @@
+import 'package:chat/models/auth_form_data.dart';
 import 'package:flutter/material.dart';
 
-class AuthForm extends StatelessWidget {
+class AuthForm extends StatefulWidget {
   const AuthForm({super.key});
+
+  @override
+  State<AuthForm> createState() => _AuthFormState();
+}
+
+class _AuthFormState extends State<AuthForm> {
+  final _formKey = GlobalKey<FormState>();
+  final _formData = AuthFormData();
+
+  void _submit() {
+    _formKey.currentState?.validate();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,19 +23,30 @@ class AuthForm extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
+          key: _formKey,
           child: Column(
             children: [
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Nome',
+              if (_formData.isSignup)
+                TextFormField(
+                  key: const ValueKey('name'),
+                  initialValue: _formData.name,
+                  onChanged: (name) => _formData.name = name,
+                  decoration: const InputDecoration(
+                    labelText: 'Nome',
+                  ),
                 ),
-              ),
               TextFormField(
+                key: const ValueKey('email'),
+                initialValue: _formData.email,
+                onChanged: (email) => _formData.email = email,
                 decoration: const InputDecoration(
                   labelText: 'E-Mail',
                 ),
               ),
               TextFormField(
+                key: const ValueKey('password'),
+                onChanged: (password) => _formData.password = password,
+                initialValue: _formData.password,
                 obscureText: true,
                 decoration: const InputDecoration(
                   labelText: 'Senha',
@@ -30,12 +54,22 @@ class AuthForm extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               FilledButton(
-                onPressed: () {},
-                child: const Text('Entrar'),
+                onPressed: _submit,
+                child: Text(
+                  _formData.isLogin ? 'Entrar' : 'Cadastrar',
+                ),
               ),
               TextButton(
-                onPressed: () {},
-                child: const Text('Criar uma nova conta?'),
+                onPressed: () {
+                  setState(() {
+                    _formData.toggleAuthMode();
+                  });
+                },
+                child: Text(
+                  _formData.isLogin
+                      ? 'Criar uma nova conta?'
+                      : 'Já possui conta?',
+                ),
               ),
             ],
           ),
