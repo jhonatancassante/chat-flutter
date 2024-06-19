@@ -6,7 +6,10 @@ class AuthFormData {
   String name = '';
   String email = '';
   String password = '';
+  String passwordConfirm = '';
   File? image;
+  bool obscurePassword = true;
+  bool obscurePasswordConfirm = true;
   AuthMode _mode = AuthMode.login;
 
   bool get isLogin {
