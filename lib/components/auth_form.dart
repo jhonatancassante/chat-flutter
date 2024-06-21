@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:chat/components/user_image_picker.dart';
 import 'package:chat/core/models/auth_form_data.dart';
 import 'package:chat/core/validations/email_validation.dart';
+import 'package:chat/core/validations/empty_password_validation.dart';
 import 'package:chat/core/validations/name_validation.dart';
 import 'package:chat/core/validations/password_validation.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,9 @@ class _AuthFormState extends State<AuthForm> {
                     ),
                   ),
                 ),
-                validator: _formData.isSignup ? passwordValidation : null,
+                validator: _formData.isSignup
+                    ? passwordValidation
+                    : emptyPasswordValidation,
               ),
               if (_formData.isSignup)
                 TextFormField(
