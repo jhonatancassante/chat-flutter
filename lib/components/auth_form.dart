@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:chat/components/user_image_picker.dart';
-import 'package:chat/models/auth_form_data.dart';
-import 'package:chat/validations/email_validation.dart';
-import 'package:chat/validations/name_validation.dart';
-import 'package:chat/validations/password_validation.dart';
+import 'package:chat/core/models/auth_form_data.dart';
+import 'package:chat/core/validations/email_validation.dart';
+import 'package:chat/core/validations/name_validation.dart';
+import 'package:chat/core/validations/password_validation.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
