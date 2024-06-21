@@ -1,4 +1,4 @@
-import 'package:chat/core/auth/auth_mock_service.dart';
+import 'package:chat/core/auth/auth_service.dart';
 import 'package:chat/pages/auth_page.dart';
 import 'package:chat/pages/chat_page.dart';
 import 'package:chat/pages/loading_page.dart';
@@ -11,7 +11,7 @@ class AuthOrAppPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: StreamBuilder(
-        stream: AuthMockService().userChanges,
+        stream: AuthService().userChanges,
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const LoadingPage();
