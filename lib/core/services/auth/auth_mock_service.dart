@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:chat/core/auth/auth_service.dart';
+import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/models/chat_user.dart';
 
 class AuthMockService implements AuthService {

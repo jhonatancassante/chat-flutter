@@ -1,4 +1,4 @@
-import 'package:chat/core/auth/auth_service.dart';
+import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/pages/auth_page.dart';
 import 'package:chat/pages/chat_page.dart';
 import 'package:chat/pages/loading_page.dart';

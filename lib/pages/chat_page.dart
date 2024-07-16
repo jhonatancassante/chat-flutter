@@ -1,4 +1,4 @@
-import 'package:chat/core/auth/auth_service.dart';
+import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {

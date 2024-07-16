@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:chat/core/auth/auth_mock_service.dart';
+import 'package:chat/core/services/auth/auth_mock_service.dart';
 import 'package:chat/core/models/chat_user.dart';
 
 abstract class AuthService {
