@@ -15,6 +15,15 @@ class MyApp extends StatelessWidget {
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.teal,
       ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
+        centerTitle: true,
+        titleTextStyle: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
     return MaterialApp(
       title: 'Flutter Demo',
