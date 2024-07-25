@@ -61,15 +61,15 @@ class ChatPage extends StatelessWidget {
                 icon: const Icon(Icons.notifications),
               ),
               Positioned(
-                top: 5,
-                right: 5,
+                top: 4,
+                right: 4,
                 child: CircleAvatar(
-                  maxRadius: 10,
+                  maxRadius: 9,
                   backgroundColor: Colors.red.shade800,
                   child: Text(
                     '${notificationCount > 9 ? '+9' : notificationCount}',
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: 11,
                       color: Colors.white,
                     ),
                   ),
