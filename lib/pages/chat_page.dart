@@ -1,7 +1,10 @@
 import 'package:chat/components/messages.dart';
 import 'package:chat/components/new_message.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
+import 'package:chat/core/services/notification/chat_notification_service.dart';
+import 'package:chat/pages/notification_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
@@ -12,33 +15,67 @@ class ChatPage extends StatelessWidget {
       'logout': () => AuthService().logout(),
     };
 
+    int notificationCount =
+        Provider.of<ChatNotificationService>(context).itemsCount;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Chat'),
         actions: [
-          DropdownButton(
-            icon: Icon(
-              Icons.more_vert,
-              color: Theme.of(context).appBarTheme.foregroundColor,
+          DropdownButtonHideUnderline(
+            child: DropdownButton(
+              icon: Icon(
+                Icons.more_vert,
+                color: Theme.of(context).appBarTheme.foregroundColor,
+              ),
+              items: const [
+                DropdownMenuItem(
+                  value: 'logout',
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.exit_to_app,
+                        color: Colors.black87,
+                      ),
+                      SizedBox(width: 10),
+                      Text('Sair'),
+                    ],
+                  ),
+                ),
+              ],
+              onChanged: (value) {
+                menuFunctions[value]();
+              },
             ),
-            items: const [
-              DropdownMenuItem(
-                value: 'logout',
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.exit_to_app,
-                      color: Colors.black87,
+          ),
+          Stack(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => const NotificationPage(),
                     ),
-                    SizedBox(width: 10),
-                    Text('Sair'),
-                  ],
+                  );
+                },
+                icon: const Icon(Icons.notifications),
+              ),
+              Positioned(
+                top: 4,
+                right: 4,
+                child: CircleAvatar(
+                  maxRadius: 9,
+                  backgroundColor: Colors.red.shade800,
+                  child: Text(
+                    '${notificationCount > 9 ? '+9' : notificationCount}',
+                    style: const TextStyle(
+                      fontSize: 11,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ),
             ],
-            onChanged: (value) {
-              menuFunctions[value]();
-            },
           ),
         ],
       ),

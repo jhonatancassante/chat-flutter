@@ -12,7 +12,7 @@ class ChatMockService implements ChatService {
       text: 'Bom dia!',
       createdAt: DateTime.now(),
       userId: '1',
-      userName: 'José Justino',
+      userName: 'Teste',
       userImageUrl: 'assets/images/avatar.png',
     ),
     ChatMessage(
@@ -28,7 +28,7 @@ class ChatMockService implements ChatService {
       text: 'Sim! :)',
       createdAt: DateTime.now(),
       userId: '1',
-      userName: 'José Justino',
+      userName: 'Teste',
       userImageUrl: 'assets/images/avatar.png',
     ),
   ];
@@ -56,7 +56,7 @@ class ChatMockService implements ChatService {
 
     _msgs.add(newMessage);
 
-    _controller?.add(_msgs);
+    _controller?.add(_msgs.reversed.toList());
 
     return newMessage;
   }
