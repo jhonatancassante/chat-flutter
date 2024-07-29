@@ -50,7 +50,12 @@ class AuthFirebaseService implements AuthService {
   Future<void> login(
     String email,
     String password,
-  ) async {}
+  ) async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+  }
 
   @override
   Future<void> logout() async {
