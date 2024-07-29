@@ -42,3 +42,10 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// Resolvido problema com firebase com opções do link https://stackoverflow.com/questions/63492211/no-firebase-app-default-has-been-created-call-firebase-initializeapp-in
+// Comandos utilizados:
+// dart pub global activate flutterfire_cli
+// npm install -g firebase-tools
+// firebase login
+// flutterfire configure
