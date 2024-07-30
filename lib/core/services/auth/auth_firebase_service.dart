@@ -99,7 +99,7 @@ class AuthFirebaseService implements AuthService {
 
   Future<void> _saveChatUser(ChatUser user) async {
     final store = FirebaseFirestore.instance;
-    final docRef = store.collection('chat_users').doc(user.id);
+    final docRef = store.collection('users').doc(user.id);
 
     return docRef.set({
       'name': user.name,
